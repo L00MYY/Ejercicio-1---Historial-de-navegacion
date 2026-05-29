@@ -136,6 +136,37 @@ namespace Ejercicio_1___Historial_de_navegacion
             return "Ya estás en la última página del historial.";
         }
 
+        private void ClearForward()
+        {
+            // Si hay una página actual y tiene nodos siguientes
+            if (current != null && current.NextNode != null)
+            {
+                current.NextNode = null; // Rompemos el enlace hacia adelante
+                tail = current;          // La página actual se convierte en la nueva cola
+            }
+        }
 
+        public void VisitPage(string url)
+        {
+            // Limpiamos el historial hacia adelante antes de insertar
+            ClearForward();
+
+            HistoryNode newNode = new HistoryNode(url);
+
+            if (head == null)
+            {
+                head = newNode;
+                tail = newNode;
+                current = newNode;
+            }
+            else
+            {
+                newNode.PreviousNode = tail;
+                tail.NextNode = newNode;
+                tail = newNode;
+                current = newNode;
+            }
+            size++;
+        }
     }
 }
