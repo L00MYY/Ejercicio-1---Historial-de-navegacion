@@ -102,6 +102,40 @@ namespace Ejercicio_1___Historial_de_navegacion
 
         }
 
+        public string GoBack()
+        {
+            // Caso: historial vacío
+            if (current == null)
+            {
+                return "El historial está vacío.";
+            }
+
+            // ¿Existe una página anterior a la actual?
+            if (current.PreviousNode != null)
+            {
+                current = current.PreviousNode; // se retrocede un nodo
+                return current.Url;
+            }
+
+            // Caso: ya estamos en la primera página
+            return "Ya estás en la primera página del historial.";
+        }
+        public string GoForward()
+        {
+            if (current == null)
+            {
+                return "El historial está vacío.";
+            }
+
+            if (current.NextNode != null)
+            {
+                current = current.NextNode;
+                return current.Url;
+            }
+
+            return "Ya estás en la última página del historial.";
+        }
+
 
     }
 }
