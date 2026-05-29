@@ -90,8 +90,15 @@ namespace Ejercicio_1___Historial_de_navegacion
 
             while (pointer != null)
             {
-                if (pointer == );
+                if (pointer == current)
+                    Console.WriteLine("-> " + pointer.Url + " (página actual)"); // se marca la página actual con una flecha
+                else
+                    Console.WriteLine("   " + pointer.Url); // las demás páginas se muestran sin marca
+
+                pointer = pointer.NextNode; // se avanza al siguiente nodo
             }
+
+            Console.WriteLine("===============================");
 
         }
 
